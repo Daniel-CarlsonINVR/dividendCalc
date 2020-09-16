@@ -5,10 +5,37 @@
     </head>
     <body>
         <h1>Homepage Headline</h1>
-        <p>This is a paragraph.!!!!!!!!!!!!!</p>
+
 
         <script type="text/javascript">
-          alert("Hello! I am an alert box!!");
+        //initial values
+        var principal = 1000;
+        var share_price = 100;
+        var div_per_share = 1;
+        var years_held = 5;
+        var shares_list = [];
+        var value_list = [];
+
+        //calculated values
+        var total_shares = principal/share_price;
+        var quarters = years_held*4;
+
+
+        var i=0
+        while (i<=quarters) {
+
+          var shares_purchased = (total_shares *div_per_share)/share_price;
+          total_shares += shares_purchased;
+          total_value = total_shares *share_price;
+          shares_list.push(total_shares);
+          value_list.push(total_value);
+          i+=1
+
+        }
+        alert(value_list);
+
+
+
         </script>
     </body>
 </html>
