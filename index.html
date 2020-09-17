@@ -2,40 +2,88 @@
 <html>
     <head>
         <title>Page Title</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<style>
+.chart-container{
+	height:50%;
+	width: 50%;
+}
+
+</style>
     </head>
     <body>
-        <h1>Homepage Headline</h1>
+        <h1>Naive Dividend Calculator</h1>
+        <div class="chart-container">
+        	<canvas id="line-chartcanvas"></canvas>
+        </div>
+
+        <div class="verbage">
+          <p>This is where I am going to mention assumptions of the model and what the potential value is</p>
+        </div>
 
 
         <script type="text/javascript">
         //initial values
         var principal = 1000;
-        var share_price = 100;
-        var div_per_share = 1;
-        var years_held = 5;
-        var shares_list = [];
-        var value_list = [];
+        var share_price = 84.84;
+        var div_per_share = .96;
+        var years_held = 3;
 
         //calculated values
         var total_shares = principal/share_price;
         var quarters = years_held*4;
 
+        //list values
+        var shares = {total_holding : [total_shares]};
+        var values = {total_money : [principal]};
+        var quarter_list = {quart : ["Q0"]};
 
-        var i=0
+
+        var i=1
         while (i<=quarters) {
 
           var shares_purchased = (total_shares *div_per_share)/share_price;
           total_shares += shares_purchased;
           total_value = total_shares *share_price;
-          shares_list.push(total_shares);
-          value_list.push(total_value);
+          shares.total_holding.push(total_shares);
+          values.total_money.push(total_value);
+          quarter_list.quart.push("Q"+String(i))
           i+=1
 
         }
-        alert(value_list);
 
+
+//chart part of the code
+        var ctx = $("#line-chartcanvas");
+
+        			var data ={
+        				labels : quarter_list.quart,
+        				datasets : [
+        					{
+        						label : "Stock Value",
+        						data : values.total_money,
+        						backgroundColor : "blue",
+        						borderColor : "lightblue",
+        						fill : false,
+        						lineTension : 0,
+        						pointRadius : 5
+        					},
+        				]
+        			};
+
+
+        			var chart = new Chart( ctx, {
+        				type : "line",
+        				data : data,
+        				options : {}
+        			});
 
 
         </script>
+
+
     </body>
 </html>
