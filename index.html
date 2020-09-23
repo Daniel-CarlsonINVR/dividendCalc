@@ -10,16 +10,33 @@
 .chart-container{
 	height:50%;
 	width: 50%;
+  float: left;
 }
 
 </style>
     </head>
     <body>
         <h1>Naive Dividend Calculator</h1>
+        <div class="main-container">
+
         <div class="chart-container">
         	<canvas id="line-chartcanvas"></canvas>
         </div>
 
+        <div class="input">
+          <form>
+  <label for="Principal">Principal:</label><br>
+  <input type="text" id="Principal" name="Principal"><br>
+  <label for="sprice">Share Price:</label><br>
+  <input type="text" id="sprice" name="sprice"><br>
+  <label for="dPerShare">div_per_share:</label><br>
+  <input type="text" id="dPerShare" name="dPerShare"><br>
+  <label for="yHeld">Years Held:</label><br>
+  <input type="text" id="yHeld" name="yHeld"><br><br>
+  <input type="button" value = "Display" onclick="graphDiv()">
+</form>
+        </div>
+  </div>
         <div class="verbage">
           <p>This is where I am going to mention assumptions of the model and what the potential value is</p>
         </div>
@@ -27,10 +44,17 @@
 
         <script type="text/javascript">
         //initial values
-        var principal = 1000;
-        var share_price = 84.84;
-        var div_per_share = .96;
-        var years_held = 3;
+
+        function test(){
+          console.log("hello")
+        }
+
+
+        function graphDiv(){
+        var principal = document.getElementById("Principal").value;
+        var share_price = document.getElementById("sprice").value;
+        var div_per_share = document.getElementById("dPerShare").value;
+        var years_held = document.getElementById("yHeld").value;
 
         //calculated values
         var total_shares = principal/share_price;
@@ -81,7 +105,7 @@
         				options : {}
         			});
 
-
+}
         </script>
 
 
