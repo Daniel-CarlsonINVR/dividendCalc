@@ -37,8 +37,17 @@
 </form>
         </div>
   </div>
+  <br><br>
         <div class="verbage">
-          <p>This is where I am going to mention assumptions of the model and what the potential value is</p>
+          <hr>
+          <ol><li>Input the principal of the stock you would invest</li>
+          <li>Enter how much per share the stock is</li>
+        <li>Enter the QUARTERLY dividend for the company</li>
+      <li>Enter how many years you will hold the stock</li></ol>
+      <br>
+      <p> For example Hypothetically invest $10000 in duke energy at $90 per share. <br> </p>
+      <p> This investment will be held for 10 years with the quartly dividend of $0.96 per share. </p>
+
         </div>
 
 
@@ -71,7 +80,7 @@
 
           var shares_purchased = (total_shares *div_per_share)/share_price;
           total_shares += shares_purchased;
-          total_value = total_shares *share_price;
+          total_value = Math.round(total_shares *share_price);
           shares.total_holding.push(total_shares);
           values.total_money.push(total_value);
           quarter_list.quart.push("Q"+String(i))
