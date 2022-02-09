@@ -81,10 +81,12 @@
         var i=1
         while (i<=quarters) {
 
-	  var quarterly_reinvestment = reinvestment *3
-	  to
-	  
-          var shares_purchased = (total_shares *div_per_share)/share_price;
+		//aggregating the quartlerly reinvestment and the dividend repurchase
+	  var quarterly_reinvestment = (reinvestment *3)/share_price;	  
+          var dividend_purchased = (total_shares *div_per_share)/share_price;
+	  var shares_purchased = quarterly_reinvestment + dividend_purchased;
+		
+		
           total_shares += shares_purchased;
           total_value = Math.round(total_shares *share_price);
           shares.total_holding.push(total_shares);
