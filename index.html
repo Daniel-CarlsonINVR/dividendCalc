@@ -33,6 +33,8 @@
   <input type="text" id="dPerShare" name="dPerShare"><br>
   <label for="yHeld">Years Held:</label><br>
   <input type="text" id="yHeld" name="yHeld"><br><br>
+  <label for="reinvestment">Monthly Reinvestment (Optional)</label><br>
+  <input type="text" id="reinvestment" name="reinvestment"><br><br>
   <input type="button" value = "Display" onclick="graphDiv()">
 </form>
         </div>
@@ -64,6 +66,7 @@
         var share_price = document.getElementById("sprice").value;
         var div_per_share = document.getElementById("dPerShare").value;
         var years_held = document.getElementById("yHeld").value;
+	var reinvestment = document.getElementById("reinvestment").value;
 
         //calculated values
         var total_shares = principal/share_price;
@@ -78,6 +81,9 @@
         var i=1
         while (i<=quarters) {
 
+	  var quarterly_reinvestment = reinvestment *3
+	  to
+	  
           var shares_purchased = (total_shares *div_per_share)/share_price;
           total_shares += shares_purchased;
           total_value = Math.round(total_shares *share_price);
